@@ -1,7 +1,7 @@
-type Props = {};
+type Props = React.BaseHTMLAttributes<HTMLButtonElement>;
 
-const Button = (_: Props) => {
-  return <div>Button</div>;
+const Button = (props: Props) => {
+  return <button {...props} />;
 };
 
 export default Button;
