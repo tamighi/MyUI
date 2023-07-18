@@ -1,20 +1,14 @@
 {
-  "name": "MyUI",
+  "name": "myui",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/MyUI.umd.cjs",
-  "module": "./dist/MyUI.js",
+  "main": "./dist/myui.umd.cjs",
+  "module": "./dist/myui.js",
   "types": "./dist/main.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/MyUI.js.js",
-      "require": "./dist/MyUI.umd.cjs"
-    }
-  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
