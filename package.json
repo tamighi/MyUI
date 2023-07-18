@@ -6,12 +6,13 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/my-lib.umd.cjs",
-  "module": "./dist/my-lib.js",
+  "main": "./dist/MyUI.umd.cjs",
+  "module": "./dist/MyUI.js",
+  "types": "./dist/main.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/my-lib.js",
-      "require": "./dist/my-lib.umd.cjs"
+      "import": "./dist/MyUI.js.js",
+      "require": "./dist/MyUI.umd.cjs"
     }
   },
   "scripts": {
@@ -49,6 +50,11 @@
     "prettier": "^3.0.0",
     "storybook": "^7.1.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.0"
+    "vite": "^4.4.0",
+    "vite-plugin-dts": "^3.3.1"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
