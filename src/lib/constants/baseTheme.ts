@@ -12,7 +12,7 @@ const lightTheme: Theme = {
     actions: {
       disabled: "rgba(0, 0, 0, 0.26)",
       disabledBackground: "rgba(0, 0, 0, 0.12)",
-      hoverImage: "linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))",
+      hoverAlpha: 0.12,
     },
   },
   transition: undefined,
@@ -30,8 +30,7 @@ const darkTheme: Theme = {
     actions: {
       disabled: "rgba(255, 255, 255, 0.3)",
       disabledBackground: "rgba(255, 255, 255, 0.12)",
-      hoverImage:
-        "linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1))",
+      hoverAlpha: 0.08,
     },
   },
   transition: undefined,

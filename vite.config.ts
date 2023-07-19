@@ -19,14 +19,13 @@ export default defineConfig({
       fileName: "myui",
     },
     rollupOptions: {
-      external: ["react", "react-dom", "styled-components"],
+      external: ["react", "react-dom"],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
-          "styled-components": "styled",
         },
       },
     },

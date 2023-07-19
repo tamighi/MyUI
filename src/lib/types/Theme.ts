@@ -8,7 +8,7 @@ type Colors = {
 type Actions = {
   disabled: string;
   disabledBackground: string;
-  hoverImage: string;
+  hoverAlpha: number;
 };
 
 type Palette = {
