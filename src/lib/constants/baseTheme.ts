@@ -4,8 +4,8 @@ const lightTheme: Theme = {
   palette: {
     mode: "light",
     colors: {
-      primary: "#45dced",
-      secondary: "#03cac6",
+      primary: "#1976D2",
+      secondary: "#E91E63",
       surface: "#ffffff",
       text: "black",
     },

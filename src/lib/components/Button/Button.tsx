@@ -1,8 +1,7 @@
 import React from "react";
 import { styled } from "styled-components";
-import { lightenOrDarken } from "../../constants";
 import { Colors } from "../../types";
-import { alpha } from "../../utils";
+import { alpha, lightenOrDarken } from "../../utils";
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "text" | "contained";
@@ -22,8 +21,10 @@ const StyledButton = styled("button")<Props>(({
     textDecoration: "none",
     borderRadius: "10px",
     padding: "6px",
-    cursor: "pointer",
-    transition: "background-color 0.3s",
+
+    transition: `${
+      theme.transition ? `${theme.transition}, ` : ""
+    }background-color 0.3s`,
 
     color: disabled
       ? theme.palette.actions.disabled
@@ -31,13 +32,15 @@ const StyledButton = styled("button")<Props>(({
       ? mainColor
       : theme.palette.colors.text,
 
-    backgroundColor: disabled
-      ? theme.palette.actions.disabledBackground
-      : variant === "text"
-      ? "transparent"
-      : mainColor,
+    backgroundColor:
+      variant === "text"
+        ? "transparent"
+        : disabled
+        ? theme.palette.actions.disabledBackground
+        : mainColor,
 
-    "&:hover:not(disabled)": {
+    "&:hover:not(:disabled)": {
+      cursor: "pointer",
       backgroundColor:
         variant === "text"
           ? alpha(mainColor, theme.palette.actions.hoverAlpha)
