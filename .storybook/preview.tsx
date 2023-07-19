@@ -1,7 +1,6 @@
-import React from "react";
-
 import type { Preview } from "@storybook/react";
-import { ThemeProvider } from "../src/lib/providers/ThemeProvider";
+import { withThemeFromJSXProvider } from "@storybook/addon-styling";
+import { lightTheme, darkTheme, ThemeProvider } from "../src/lib";
 
 const preview: Preview = {
   parameters: {
@@ -14,11 +13,14 @@ const preview: Preview = {
     },
   },
   decorators: [
-    (Story) => (
-      <ThemeProvider>
-        <Story />
-      </ThemeProvider>
-    ),
+    withThemeFromJSXProvider({
+      themes: {
+        light: lightTheme,
+        dark: darkTheme,
+      },
+      defaultTheme: "light",
+      Provider: ThemeProvider,
+    }),
   ],
 };
 

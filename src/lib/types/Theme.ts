@@ -9,6 +9,7 @@ type Actions = {
   disabled: string;
   disabledBackground: string;
   hoverAlpha: number;
+  hoverIntensity: number;
 };
 
 type Palette = {

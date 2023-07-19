@@ -12,15 +12,14 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       options: ["text", "contained"],
+      control: { type: "radio" },
     },
-    color: {
+    variantColor: {
       options: ["primary", "secondary"],
-      control: { type: "select" },
-      defaultValue: "primary",
+      control: { type: "radio" },
     },
     disabled: {
-      defaultValue: false,
-      type: "boolean"
+      type: "boolean",
     },
   },
 };
@@ -28,26 +27,32 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {
+export const Text: Story = {
   args: {
-    children: "Primary",
+    children: "Text",
     variant: "text",
-    color: "primary",
   },
 };
 
-export const Secondary: Story = {
+export const Contained: Story = {
   args: {
-    children: "Secondary",
-    variant: "text",
-    color: "secondary",
+    children: "Contained",
+    variant: "contained",
   },
 };
 
-export const Disabled: Story = {
+export const DisabledText: Story = {
   args: {
-    children: "Disabled",
+    children: "DisabledText",
     variant: "text",
-    disabled: true
+    disabled: true,
+  },
+};
+
+export const DisabledContained: Story = {
+  args: {
+    children: "DisabledContained",
+    variant: "contained",
+    disabled: true,
   },
 };

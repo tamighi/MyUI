@@ -1,56 +1,77 @@
 import React from "react";
-import { styled } from "styled-components";
-import { Colors } from "../../types";
-import { alpha, lightenOrDarken } from "../../utils";
 
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "text" | "contained";
-  color?: keyof Colors;
-};
+import { styled } from "styled-components";
+import { lightTheme } from "../../constants";
+import { Colors } from "../../types";
+import { alpha, applyHoverColor } from "../../utils";
 
 const StyledButton = styled("button")<Props>(({
   theme,
   variant = "text",
   disabled,
-  color = "primary",
+  variantColor = "primary",
 }) => {
-  const mainColor = theme.palette.colors[color];
+  // If no theme is provided, fallback to the lightTheme
+  if (Object.keys(theme).length === 0) {
+    theme = lightTheme;
+  }
+
+  const { actions, colors } = theme.palette;
+
+  const mainColor = theme.palette.colors[variantColor];
+
   return {
     fontWeight: "bold",
     border: "none",
     textDecoration: "none",
     borderRadius: "10px",
     padding: "6px",
+    cursor: disabled ? "not-allowed" : "pointer",
 
     transition: `${
       theme.transition ? `${theme.transition}, ` : ""
     }background-color 0.3s`,
 
     color: disabled
-      ? theme.palette.actions.disabled
+      ? actions.disabled
       : variant === "text"
       ? mainColor
-      : theme.palette.colors.text,
+      : colors.text,
 
     backgroundColor:
       variant === "text"
         ? "transparent"
         : disabled
-        ? theme.palette.actions.disabledBackground
+        ? actions.disabledBackground
         : mainColor,
 
     "&:hover:not(:disabled)": {
-      cursor: "pointer",
       backgroundColor:
         variant === "text"
-          ? alpha(mainColor, theme.palette.actions.hoverAlpha)
-          : lightenOrDarken(mainColor),
+          ? alpha(mainColor, actions.hoverAlpha)
+          : applyHoverColor(mainColor, actions.hoverIntensity),
     },
   };
 });
 
-const Button = React.forwardRef<HTMLButtonElement, Props>((props, ref) => {
-  return <StyledButton ref={ref} {...props} />;
-});
+/**
+ * Button component props.
+ * Inherits all the properties of a regular HTML button element.
+ */
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  /** Button style variant: "text" or "contained" */
+  variant?: "text" | "contained";
+  /** Color variant for the button */
+  variantColor?: keyof Colors;
+};
+
+/**
+ * Button component.
+ * @param variant - Button style variant (default: "text").
+ * @param variantColor - Color variant for the button (default: "primary").
+ */
+const Button = (props: Props) => {
+  return <StyledButton {...props} />;
+};
 
 export default Button;

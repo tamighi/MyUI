@@ -1,12 +1,12 @@
 import tinycolor from "tinycolor2";
 
-const lightenOrDarken = (color: string) => {
+const applyHoverColor = (color: string, hoverIntensity: number) => {
   const tinyColor = tinycolor(color);
   if (tinyColor.isLight()) {
-    return tinyColor.darken(20).toString();
+    return tinyColor.darken(hoverIntensity).toString();
   } else {
-    return tinyColor.lighten(20).toString();
+    return tinyColor.lighten(hoverIntensity).toString();
   }
 };
 
-export { lightenOrDarken };
+export { applyHoverColor };

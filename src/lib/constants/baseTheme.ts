@@ -4,8 +4,8 @@ const lightTheme: Theme = {
   palette: {
     mode: "light",
     colors: {
-      primary: "#1976D2",
-      secondary: "#E91E63",
+      primary: "#90caf9",
+      secondary: "#ce93d8",
       surface: "#ffffff",
       text: "black",
     },
@@ -13,6 +13,7 @@ const lightTheme: Theme = {
       disabled: "rgba(0, 0, 0, 0.26)",
       disabledBackground: "rgba(0, 0, 0, 0.12)",
       hoverAlpha: 0.12,
+      hoverIntensity: 20,
     },
   },
   transition: undefined,
@@ -31,6 +32,7 @@ const darkTheme: Theme = {
       disabled: "rgba(255, 255, 255, 0.3)",
       disabledBackground: "rgba(255, 255, 255, 0.12)",
       hoverAlpha: 0.08,
+      hoverIntensity: 20,
     },
   },
   transition: undefined,
