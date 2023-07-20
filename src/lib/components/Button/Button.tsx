@@ -5,13 +5,12 @@ import { lightTheme } from "../../constants";
 import { Colors } from "../../types";
 import { alpha, applyHoverColor } from "../../utils";
 
-const StyledButton = styled("button")<Props>(({
+const StyledButton = styled("button")<ButtonProps>(({
   theme,
   variant = "text",
-  disabled,
+  disabled = false,
   variantColor = "primary",
 }) => {
-  // If no theme is provided, fallback to the lightTheme
   if (Object.keys(theme).length === 0) {
     theme = lightTheme;
   }
@@ -58,10 +57,10 @@ const StyledButton = styled("button")<Props>(({
  * Button component props.
  * Inherits all the properties of a regular HTML button element.
  */
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  /** Button style variant: "text" or "contained" */
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  /** @default "text" - Variant to use */
   variant?: "text" | "contained";
-  /** Color variant for the button */
+  /** @default "primary" - Color of the button, depending on theme */
   variantColor?: keyof Colors;
 };
 
@@ -70,8 +69,10 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
  * @param variant - Button style variant (default: "text").
  * @param variantColor - Color variant for the button (default: "primary").
  */
-const Button = (props: Props) => {
-  return <StyledButton {...props} />;
-};
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (props, ref) => {
+    return <StyledButton ref={ref} {...props} />;
+  }
+);
 
 export default Button;
