@@ -14,7 +14,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, "src/lib/main.ts"),
+      entry: resolve(__dirname, "src/lib/index.ts"),
       name: "myui",
       fileName: "myui",
     },
